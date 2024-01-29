@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Header from "../../components/Header/Header";
 import CatalogItem from "./CatalogItem/CatalogItem";
 import s from './MainPage.module.scss'
-import {ICatalogItem, ICatalogItems} from "../../utils/api/types";
+import {ICatalogItem} from "../../utils/api/types";
 import {CatalogAPI} from "../../utils/api";
 
 const MainPage:React.FC = (props) => {
@@ -26,9 +26,6 @@ const MainPage:React.FC = (props) => {
     return (
      <>
          <Header/>
-
-         {console.log(catalogItems)}
-
          <div className={s.catalogItemsWrapper}>
              {
                  catalogItems?.map(c => (<CatalogItem key={c.id} id={c.id} name={c.name} price={c.price} pictureUrl={c.pictureUrl} description={c.description} availableStock={c.availableStock} typeId={c.typeId} brandId={c.brandId}/>))
