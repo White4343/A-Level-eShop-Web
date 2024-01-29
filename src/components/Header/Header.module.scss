@@ -1,0 +1,16 @@
+.wrapper_header {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: solid black 1px;
+
+  .item {
+    cursor: pointer;
+    color: blueviolet;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
