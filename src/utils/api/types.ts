@@ -12,3 +12,8 @@ export interface ICatalogItem {
     "typeId": number
     "brandId": number
 }
+
+export interface IReqUser {
+    "login": string
+    "password": string
+}
