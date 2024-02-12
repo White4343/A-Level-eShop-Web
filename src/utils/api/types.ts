@@ -1,7 +1,3 @@
-export interface ICatalogItems {
-    "data": ICatalogItem[]
-}
-
 export interface ICatalogItem {
     "id": number
     "name": string
@@ -16,4 +12,28 @@ export interface ICatalogItem {
 export interface IReqUser {
     "login": string
     "password": string
+}
+
+export interface IBasketItem {
+    "id": number
+    "createdAt": string
+    "quantity": number
+    "itemPrice": number
+    "itemId": number
+}
+
+export interface IBrand {
+    "id": number
+    "name": string
+}
+
+export interface IType {
+    "id": number
+    "name": string
+}
+
+export interface IReqBasketItem {
+    "quantity": number | undefined,
+    "itemPrice": number | undefined,
+    "itemId": number | string | undefined
 }

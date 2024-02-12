@@ -30,8 +30,8 @@ const Header: React.FC = (props) => {
     return (
         <div className={s.wrapper_header}>
             <div className={s.item} onClick={() => navigate('/')}>Main Page</div>
-            <div className={s.item}>Basket</div>
-            <div className={s.item}>Order Status</div>
+            <div className={s.item} onClick={() => navigate('/basket')}>Basket</div>
+            <div className={s.item}>Order's Status</div>
             {isAuth ? (
                     <div className={s.item} onClick={() => onLogOut()}>
                         LogOut
