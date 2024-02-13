@@ -5,12 +5,14 @@ import {IBasketItem, IBrand, ICatalogItem, IReqBasketItem, IType} from "../../..
 import {BasketAPI, CatalogAPI} from "../../../utils/api";
 import {useParams} from "react-router-dom";
 import Button from "@mui/material/Button";
+import {useAuth} from "../../../utils/hooks/useAuth";
 
 const CatalogItemPage: React.FC = () => {
     const [item, setItem] = useState<ICatalogItem>()
     const [brand, setBrand] = useState<IBrand>()
     const [type, setType] = useState<IType>()
     const {id} = useParams();
+    const isAuth = useAuth();
 
     const fetchItem = async () => {
         try {
@@ -36,6 +38,11 @@ const CatalogItemPage: React.FC = () => {
     }
 
     const onClickPostBasketItem = async () => {
+        if(!isAuth) {
+            alert('Pls login')
+            return
+        }
+
         try {
             let res: IBasketItem;
 
