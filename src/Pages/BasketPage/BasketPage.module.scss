@@ -2,5 +2,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-left: 1em;
+  flex-direction: column;
+  align-content: center;
+  margin-top: 1em;
+
+  .itemTitles {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.createOrderButton {
+  display: flex;
+  margin-top: 1em;
+  justify-content: flex-end;
+  margin-right: 1em;
 }
