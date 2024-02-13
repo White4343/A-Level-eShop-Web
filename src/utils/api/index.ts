@@ -56,6 +56,24 @@ export const BasketAPI = {
                 Authorization: "Bearer " + token
             }
         }).then(res => res.data)
+    },
+    deleteBasketItem(id: string | number | undefined){
+        const token = Cookies.get('token')
+
+        return basketAPI.delete(`/basket/${id}`, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then(res => res.data)
+    },
+    deleteBasket() {
+        const token = Cookies.get('token')
+
+        return basketAPI.post(`/basket/DeleteBasketByLogin`, null, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then(res => res.data)
     }
 }
 
