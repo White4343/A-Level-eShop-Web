@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import s from './Header.module.scss'
 import {useNavigate} from "react-router-dom";
 import {UserManager} from "oidc-client-ts";
@@ -7,7 +7,6 @@ import Cookies from 'js-cookie';
 import {useAuth} from "../../utils/hooks/useAuth";
 
 const Header: React.FC = (props) => {
-    const [state, setState] = useState(null);
     const navigate = useNavigate();
     const mgr = new UserManager(IDENTITY_CONFIG);
     const isAuth = useAuth();
@@ -31,7 +30,7 @@ const Header: React.FC = (props) => {
         <div className={s.wrapper_header}>
             <div className={s.item} onClick={() => navigate('/')}>Main Page</div>
             <div className={s.item} onClick={() => navigate('/basket')}>Basket</div>
-            <div className={s.item}>Order's Status</div>
+            <div className={s.item} onClick={() => navigate('/order')}>Order's Status</div>
             {isAuth ? (
                     <div className={s.item} onClick={() => onLogOut()}>
                         LogOut
