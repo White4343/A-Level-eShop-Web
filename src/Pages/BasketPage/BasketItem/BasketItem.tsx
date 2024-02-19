@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {ICatalogItem} from "../../../utils/api/types";
 import {BasketAPI, CatalogAPI} from "../../../utils/api";
-import { styled } from '@mui/material/styles';
-import TableRow from '@mui/material/TableRow';
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
+import {StyledTableCell, StyledTableRow} from "../../../components/Tables/WhiteBlackTable";
 
 interface BasketItemProps {
     id: number
@@ -12,22 +11,10 @@ interface BasketItemProps {
     quantity: number
     itemPrice: number
     itemId: number
-    cellStyle: any
 }
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
-const BasketItem: React.FC<BasketItemProps> = ({id, createdAt, quantity, itemPrice, itemId, cellStyle}) => {
+const BasketItem: React.FC<BasketItemProps> = ({id, createdAt, quantity, itemPrice, itemId}) => {
     const [catalogItem, setCatalogItem] = useState<ICatalogItem>();
-    const StyledTableCell = cellStyle;
 
     let navigate = useNavigate();
 
