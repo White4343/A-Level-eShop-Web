@@ -37,3 +37,20 @@ export interface IReqBasketItem {
     "itemPrice": number | undefined,
     "itemId": number | string | undefined
 }
+
+export interface IOrderItem {
+    "id": number,
+    "status": string,
+    "createdAt": string,
+    "totalPrice": number,
+    "userLogin": string
+}
+
+export interface IOrderBasketItem {
+    "id": number,
+    "createdAt": string,
+    "quantity": number,
+    "itemPrice": number,
+    "itemId": number,
+    "orderId": number
+}

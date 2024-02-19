@@ -4,27 +4,17 @@ import {useAuth} from "../../utils/hooks/useAuth";
 import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import {IBasketItem} from "../../utils/api/types";
-import {BasketAPI} from "../../utils/api";
+import {BasketAPI, OrderAPI} from "../../utils/api";
 import BasketItem from "./BasketItem/BasketItem";
-import {styled} from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, {tableCellClasses} from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from "@mui/material/Button";
+import {StyledTableCell} from "../../components/Tables/WhiteBlackTable";
 
-const StyledTableCell = styled(TableCell)(({theme}) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-    },
-}));
 const BasketPage: React.FC = (props) => {
     const [basketItems, setBasketItems] = useState<IBasketItem[]>([])
     const isAuth = useAuth();
@@ -69,6 +59,22 @@ const BasketPage: React.FC = (props) => {
         }
     }
 
+    const onClickCreateOrder = async ()  => {
+        try {
+            let res = await OrderAPI.postBasketOrdersByBasket()
+
+            if (res === null) {
+                alert('Order is not created!')
+            }
+            alert('Order is created')
+
+            navigate('/')
+        } catch (e) {
+            console.log(e)
+            alert(e)
+        }
+    }
+
     return (
         <>
             <Header/>
@@ -91,7 +97,7 @@ const BasketPage: React.FC = (props) => {
                                 {basketItems?.map(c => (
                                     <BasketItem id={c.id} createdAt={c.createdAt} quantity={c.quantity}
                                                 itemPrice={c.itemPrice}
-                                                itemId={c.itemId} cellStyle={StyledTableCell}/>
+                                                itemId={c.itemId}/>
                                 ))}
                             </TableBody>
                             <TableRow>
@@ -105,7 +111,7 @@ const BasketPage: React.FC = (props) => {
                         </Table>
                     </TableContainer>
                     <div className={s.createOrderButton}>
-                        <Button variant="outlined">Create Order</Button>
+                        <Button variant="outlined" onClick={onClickCreateOrder}>Create Order</Button>
                     </div>
                 </>
             }

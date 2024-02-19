@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './CatalogItemPage.module.scss'
 import Header from "../../../components/Header/Header";
-import {IBasketItem, IBrand, ICatalogItem, IReqBasketItem, IType} from "../../../utils/api/types";
+import {IBasketItem, IBrand, ICatalogItem, IReqBasketItem, IType} from "../../../utils/api/types"
 import {BasketAPI, CatalogAPI} from "../../../utils/api";
 import {useParams} from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -73,10 +73,6 @@ const CatalogItemPage: React.FC = () => {
             fetchBrandType();
         }
     }, [item]);
-
-
-    console.log(item?.brandId)
-    console.log(item?.typeId)
 
     return (
         <>

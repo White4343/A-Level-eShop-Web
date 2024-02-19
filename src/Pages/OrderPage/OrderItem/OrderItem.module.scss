@@ -1,0 +1,10 @@
+.orderItemWrapper {
+  display: flex;
+  gap: 1em;
+  border: solid black 1px;
+  padding: 1em;
+
+  .footerItem {
+    display: flex;
+  }
+}
